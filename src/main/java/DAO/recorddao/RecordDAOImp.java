@@ -55,6 +55,15 @@ public class RecordDAOImp implements RecordDAO{
         em.getTransaction().commit();
         return ResultMessage.OK;
     }
+
+    /**
+     * 如果该客户已经订购了某套餐（且没有退订），则不能再次订购
+     * @param userId 订购者ID
+     * @param tid 套餐ID
+     * @param today 订购日期
+     * @param immediate 是否立即生效
+     * @return
+     */
     @Override
     public ResultMessage subscribeTaoCan(long userId, long tid,LocalDateTime today ,boolean immediate) {
         em.getTransaction().begin();
@@ -80,6 +89,14 @@ public class RecordDAOImp implements RecordDAO{
         return ResultMessage.OK;
     }
 
+    /**
+     * 
+     * @param userId 订购者Id
+     * @param tid 套餐ID
+     * @param today 订购日期
+     * @param immediate 是否立即生效
+     * @return
+     */
     @Override
     public ResultMessage unsubscribeTaoCan(long userId, long tid,LocalDateTime today,boolean immediate) {
         em.getTransaction().begin();

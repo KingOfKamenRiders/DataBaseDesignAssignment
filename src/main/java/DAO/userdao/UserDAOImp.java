@@ -191,6 +191,13 @@ public class UserDAOImp implements UserDAO {
         return records;
     }
 
+    /**
+     * 生成账单的方法
+     * 如果本月不是第一次生成账单，将会先删除上次生成的账单，然后根据当前的用量和套餐情况重新生成最新的账单
+     * @param userId
+     * @param today
+     * @return
+     */
     @Override
     public ResultMessage generateBill(long userId,LocalDateTime today) {
 
